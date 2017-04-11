@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">Organiser</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+          <li *ngIf="userService.getCurrentUser()"><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+          <li *ngIf="userService.getCurrentUser()"><a routerLink="/tasks" routerLinkActive="active">All Tasks</a></li>
+          <li *ngIf="userService.getCurrentUser()"><a routerLink="/tasks/mine" routerLinkActive="active">My Tasks</a></li>
+          <li *ngIf="userService.getCurrentUser()"><a routerLink="/tasks/overdue" routerLinkActive="active">Overdue Tasks</a></li>
+          <li *ngIf="userService.getCurrentUser()"><a routerLink="/tasks/recent" routerLinkActive="active">Recent Tasks</a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+          <li *ngIf="userService.getCurrentUser()"><a (click)="this.authenticationService.logout()" routerLinkActive="active">Logout</a></li>
+          <li *ngIf="!userService.getCurrentUser()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="root-container">
+    <router-outlet></router-outlet>
+</div>

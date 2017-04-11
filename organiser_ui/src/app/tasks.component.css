@@ -1,0 +1,61 @@
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+
+
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.tasks {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 900px;
+}
+.tasks li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 2.2em;
+  border-radius: 4px;
+}
+.tasks li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.tasks li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  /*left: .1em;*/
+}
+.tasks .text {
+  position: relative;
+  top: -3px;
+}
+.tasks .badge {
+  text-align: left;
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.6em 0.5em 0 0.7em;
+  background-color: #286090;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 2.2em;
+  width: 400px;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+  overflow: hidden;
+}
+
+.tasks .status {
+  color: #286090;
+}

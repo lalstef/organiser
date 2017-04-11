@@ -1,0 +1,64 @@
+<div>
+    <button
+      type="button"
+      class="btn btn-sm btn-default"
+      (click)="goBack()">Back</button>
+</div>
+
+<div *ngIf="task" class="task">
+  <div *ngIf="!editMode">
+    <h2>{{task.name}}</h2> <span class="status">{{ taskService.getStatusLabel(task.status) }}</span>
+    <div class="description">Description: {{ task.description }}</div>
+    <div *ngIf="task.due_datetime" class="due-datetime">Due before: {{ task.due_datetime }}</div>
+    <div class="owner">Owner: {{ task.owner_username }}</div>
+  </div>
+
+  <div *ngIf="editMode">
+      <div class="col-md-4">
+          <div class="form-group">
+            <div><label>Name: </label><input class="form-control" [(ngModel)]="task.name" /></div>
+          </div>
+          <div class="form-group">
+              <div>
+                  <label>Status: </label>
+                  <select class="form-control" [(ngModel)]="task.status">
+                    <option *ngFor="let status of this.taskService.getTaskStatuses()" value="{{  status.value }}">{{ status.label }}</option>
+                  </select>
+              </div>
+            </div>
+          <div class="form-group">
+            <div><label>Description: </label><input class="form-control" [(ngModel)]="task.description" /></div>
+          </div>
+
+          <div>
+              <button
+                 type="button"
+                 class="btn btn-sm btn-success"
+                 (click)="saveTask()">Save</button>
+
+              <button
+                 type="button"
+                 class="btn btn-sm btn-default"
+                 (click)="exitEditMode()">Cancel</button>
+          </div>
+      </div>
+  </div>
+
+  <div *ngIf="!editMode">
+      <button *ngIf="userService.getCurrentUser().username == task.owner_username && task.status !== this.taskService.getStatusCode('DONE')"
+        type="button"
+        class="btn btn-sm btn-success"
+        (click)="markTaskDone()">Mark Done</button>
+
+      <button *ngIf="userService.getCurrentUser().username == task.owner_username"
+         type="button"
+         class="btn btn-sm btn-primary"
+         (click)="enterEditMode()">Edit</button>
+
+      <button *ngIf="userService.getCurrentUser().username == task.owner_username"
+         type="button"
+         class="btn btn-sm btn-danger"
+         (click)="deleteTask()">Delete</button>
+
+  </div>
+</div>

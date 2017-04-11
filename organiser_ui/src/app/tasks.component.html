@@ -1,0 +1,43 @@
+<h2>Tasks</h2>
+<button *ngIf="this.completedHidden !== true"
+  type="button"
+  class="btn btn-sm btn-warning"
+  (click)="hideCompletedTasks()">Hide Completed Tasks</button>
+
+<button *ngIf="this.completedHidden === true"
+  type="button"
+  class="btn btn-sm btn-warning"
+  (click)="showCompletedTasks()">Show Completed Tasks</button>
+
+<ul class="tasks">
+  <li *ngFor="let task of displayedTasks"
+      [class.selected]="task === selectedTask"
+      (click)="onSelect(task)">
+    <span class="badge">{{ task.name }}</span>
+    <span><strong>{{ task.owner_username }}</strong></span>,
+    <span class="status">{{ taskService.getStatusLabel(task.status) }}</span>
+  </li>
+</ul>
+
+<!-- pager -->
+<div>
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+    </ul>
+</div>
+
+<a class="btn btn-sm btn-success" routerLink="/tasks/add">Add New Task</a>

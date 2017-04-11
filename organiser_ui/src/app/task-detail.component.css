@@ -1,0 +1,56 @@
+label {
+  display: inline-block;
+  width: 3em;
+  margin: .5em 0;
+  color: #607D8B;
+  font-weight: bold;
+}
+input {
+  height: 2em;
+  font-size: 1em;
+  padding-left: .4em;
+}
+
+.task .name {
+
+}
+
+.task .description {
+  margin-top: 20px;
+  color: black;
+}
+
+.task .status {
+  color: #ffffff;
+  background-color: #286090;
+  padding: 0.5em;
+  line-height: 2.2em;
+}
+
+.task .due-datetime {
+
+}
+
+.task .owner {
+
+}
+
+/*.task button {*/
+  /*margin-top: 20px;*/
+  /*font-family: Arial;*/
+  /*background-color: #eee;*/
+  /*border: none;*/
+  /*padding: 5px 10px;*/
+  /*border-radius: 4px;*/
+  /*cursor: pointer; cursor: hand;*/
+/*}*/
+
+/*.task button:hover {*/
+  /*background-color: #cfd8dc;*/
+/*}*/
+
+/*.task button:disabled {*/
+  /*background-color: #eee;*/
+  /*color: #ccc;*/
+  /*cursor: auto;*/
+/*}*/

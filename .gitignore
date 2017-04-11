@@ -1,0 +1,8 @@
+DS_Store
+.idea/
+__pycache__/
+node_modules/
+*.py[cod]
+*~
+*.sqlite3
+notes.txt
